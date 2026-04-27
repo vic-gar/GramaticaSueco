@@ -10,18 +10,18 @@ Para el alcance del proyecto se trabajará con un subconjunto de oraciones simpl
 
 El sueco, además del modelo SVO, cuenta con un sistema de artículos distinto al de otros idiomas, distinguiendo entre dos géneros gramaticales, el común y el neutro, los cuales cuentan con los siguientes artículos:
 
-- Género común: *en*
-- Género neutro: *ett*
+- Género común: `en`
+- Género neutro: `ett`
 
 En la forma indefinida se se colocan estos artículos al sustantivo dependiendo de su género, por ejemplo: 
 
-- Una niña -> *en flicka*
-- Una mesa -> *ett bord*
+- Una niña: `en flicka`
+- Una mesa: `ett bord`
 
 En la forma definida se añade el sufijo al final del sustantivo de igual forma dependiendo del género, por ejemplo: 
 
-- La niña -> *flickan*
-- La mesa -> *bordet*
+- La niña: `flickan`
+- La mesa: `bordet`
 
 (Swedish Institute, s.f., sección Gender in Swedish Nouns & Definite and Indefinite Forms).
 
@@ -33,9 +33,9 @@ Una gramática, según Maggie Johnoson en su documento titulado *Formal Grammars
 
 Como se explicó en la descrpicón de la evidencia, el proyecto se centrará en oraciones del tipo Sujeto-Verbo-Objeto junto con sus formas definidas e indefinidas de los artículos por género. Por ende se utilizaran las siguientes categorías: 
 
-- Artículos definidos: *en, ett*
-- Sustantivos comunes en su forma indefinida: *pojke* (niño), *flicka* (niña), *hus* (casa), *bok* (libro), *hund* (perro), *bil* (auto).
-- Sustantivos definidos: *pojken*, *flickan*, *huset*, *boken*, *hunden*, *bilen*.
-- Verbos transitivos: *äter* (come), *ser* (ve), läser (lee).
-- Conjunciones: *och* (y), *eller* (o).
+- Artículos definidos: `en`, `ett`.
+- Sustantivos comunes en su forma indefinida: `pojke` (niño), `flicka` (niña), `hus` (casa), `bok` (libro), `hund` (perro), `bil` (auto).
+- Sustantivos definidos: `pojken`, `flickan`, `huset`, `boken`, `hunden`, `bilen`.
+- Verbos transitivos: `äter` (come), `ser` (ve), `läser` (lee).
+- Conjunciones: `och` (y), `eller` (o).
 
