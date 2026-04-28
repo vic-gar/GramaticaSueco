@@ -142,5 +142,75 @@ Se definió la función `analyze_sentence()` que recibe una oración, la limpia 
 
 ## Pruebas
 
+El programa puede ejecutarse de dos formas, *automática* o *manual*. En la forma automática se define previamente una lista de oraciones dentro del código y el programa las analiza una por una indicando si son aceptadas o rechazadas, mostrando su árbol de sintaxis en el primer caso. En la forma manual se debe ingresar una oración, permitiendo probar distintas cadenas. 
+
+Para ejecutar el código se debe instalar la librería NLTK con el comando `python -m pip install nltk` para despues ejecutarlo con `python gramatica_sueco.py`.
+
+### Ejemplos de cadenas válidas 
+
+- `en pojke ser flickan` &rarr; un niño ve a la niña.
+
+<div align="center">
+<img width="430" height="357" alt="image" src="https://github.com/user-attachments/assets/0c1557fd-ca9d-4719-ac4f-559fb9235e46" /><br></div>
+
+- `pojken läser en bok` &rarr; el niño lee un libro.
+
+<div align="center">
+<img width="420" height="368" alt="image" src="https://github.com/user-attachments/assets/e40c9434-c1ad-4649-9fc1-64e53a08af21" />
+<br></div>
+
+- `en pojke och en flicka ser bilen` &rarr; un niño y una niña ven el auto.
+
+<div align="center">
+<img width="633" height="420" alt="image" src="https://github.com/user-attachments/assets/1db05610-acd2-4cb5-a005-f36ca0a0deee" />
+<br></div>
+
+
+### Ejemplos de cadenas inválidas 
+
+- `pojke ser flickan` → niño ve a la niña
+
+<div align="center">
+<img width="361" height="122" alt="image" src="https://github.com/user-attachments/assets/e9e8a653-4b85-44e3-a052-94ae4d18cd86" />
+<br></div>
+
+- `en flicka och ser pojken` → una niña y ve al niño
+
+<div align="center">
+<img width="457" height="125" alt="image" src="https://github.com/user-attachments/assets/03c05a41-0b3a-4ba1-a62c-fbe2a40a2e4e" />
+<br></div>
+
+## Análisis
+
+### Análisis de gramática inicial por Chomsky
+
+La gramática inicial del proyecto que contiene ambigüedad y recursividad izquierda, es una gramática libre de contexto, según las notas de la Universidad de Illinois, las gramáticas de tipo 2 en la jerarquía de Chomsky están formadas por reglas de la forma A &rarr; β, donde A es un único no terminal y β es una cadena de terminales y/o no terminales, lo que nos indica que antes de eliminar la ambigüedad y la recursión izquierda la gramática sigue siendo de tipo 2 porque todas sus producciones cumplen esa forma, a pesar de tener problemas de ambigüedad y recursividad (Chomsky Hierarchy, s.f., sección 1.2 Context-free Languajes).
+
+### Análisis de gramática final por Chomsky
+
+Al eliminar la ambigüedad y recursividad izquierda se restructuran las reglas pero no cambian su tipo, ya que las producciones continúan siendo de la forma A &rarr; β, por lo que la gramática también pertenece a Tipo 2 en la jerarquía de Chomsky. Lo que cambia es su determinismo: la nueva gramática es no ambigua y no posee recursividad izquierda, lo cual permite utilizar un parser LL(1) (Chomsky Hierarchy, s.f., sección 1.2 Context-free Languajes).
+
+### Complejidad temporal
+
+Cuando la gramática contiene ambigüedad y recursión izquierda no puede ser analizada mediante un parser LL(1). En este caso es necesario emplear algoritmos generales de análisis para gramáticas libres de contexto, como el algoritmo CYK, que utiliza programación dinámica sobre una tabla triangular, teniendo una complejidad temporal de O(n3) debido a que el algoritmo debe considerar múltiples combinaciones de subcadenas y reglas para resolver la ambigüedad. (geeksforgeeks, 2025, sección Time and Space Complexity).
+
+Por otro lado, tras eliminar la ambigüedad y la recursión izquierda la gramática que nos queda es apta para un parser LL(1), que permiten decidir que producción aplicar en base al símbolo de entrada, siendo eficientes porque pueden analizarse en tiempo O(n), generando una reducción de la complejidad, de cúbica a lineal. Esto es posible porque la nueva gramática tiene reglas no ambiguas y sin recursión izquierda, lo que permite un análisis con una sola mirada de anticipación (geeksforgeeks, 2025, sección Time Complexity).
+
+Ambas gramáticas pertenecen en el Tipo 2 de la jerarquía de Chomsky, siendo una gramática libre de contexto, pero la eliminación de la ambigüedad y de la recursividad izquierda modifica su complejidad temporal de O(n3) a O(n), haciendo el análisis mucho más eficiente.
+
+## Referencias
+
+NLTK Documentation. (1 de octubre, 2025). Natural Language Toolkit. https://www.nltk.org/
+
+Johnson, M., & Zelenski, J. (29 de junio, 2012). Formal Grammars. https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/handouts/080%20Formal%20Grammars.pdf#:~:text=In%20addition%20to%20several%20reasonable,syntax%20analysis%20phase%2C%20we%20verify
+
+Swedish Institute. (s.f.). Master the Rules Swedish Grammar. https://swedish-institute.org/swedish-grammar
+
+Chomsky Hierarchy. (s.f.) Chomsky Hierarchy Grammars for each task. https://courses.grainger.illinois.edu/cs373/fa2013/Lectures/lec18.pdf#:~:text=Context,free%20languages.%202
+
+GeeksForGeeks. (15 de julio, 2025). CYK Algorithm for Context Free Grammar. https://www.geeksforgeeks.org/theory-of-computation/cyk-algorithm-for-context-free-grammar/
+
+GeeksForGeeks. (23 de julio, 2025). LL(1) Parsing Algorithm. https://www.geeksforgeeks.org/compiler-design/ll1-parsing-algorithm/
+
 
 
